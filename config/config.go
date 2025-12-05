@@ -8,6 +8,7 @@ type Config struct {
 	Temperature  float32 `mapstructure:"temperature"`
 	CustomPrompt string  `mapstructure:"custom_prompt"`
 	BasePrompt   string  `mapstructure:"base_prompt"`
+	MaxTokens    *int    `mapstructure:"max_tokens"`
 }
 
 // configValue holds the current configuration atomically.

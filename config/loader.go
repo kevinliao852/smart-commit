@@ -29,6 +29,7 @@ func Load(configFile string) (*Config, error) {
 
 	v.SetDefault("model", "gpt-4o-mini")
 	v.SetDefault("temperature", 0.3)
+	v.SetDefault("max_tokens", 1024)
 
 	err := autoBindEnv(v, Config{})
 	if err != nil {

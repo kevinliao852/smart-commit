@@ -13,6 +13,7 @@ type OpenAIClient struct {
 	model        string
 	customPrompt string
 	basePrompt   string
+	maxTokens    *int
 }
 
 func NewOpenAIClient(
@@ -20,12 +21,14 @@ func NewOpenAIClient(
 	model string,
 	customPrompt string,
 	basePrompt string,
+	maxTokens *int,
 ) *OpenAIClient {
 	return &OpenAIClient{
 		apiKey:       apiKey,
 		model:        model,
 		customPrompt: customPrompt,
 		basePrompt:   basePrompt,
+		maxTokens:    maxTokens,
 	}
 }
 
@@ -45,6 +48,7 @@ func (c *OpenAIClient) GenerateCommitMessage(diff string) (string, error) {
 		"messages": []map[string]string{
 			{"role": "user", "content": fmt.Sprintf(prompt, diff)},
 		},
+		"max_tokens": c.maxTokens,
 	}
 
 	body, _ := json.Marshal(req)

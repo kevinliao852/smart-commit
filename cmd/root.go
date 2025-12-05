@@ -26,6 +26,7 @@ intelligent commit messages based on the changes in your git repository.`,
 		fmt.Fprintln(os.Stderr, "Configuration loaded successfully.")
 		fmt.Fprintf(os.Stderr, "Using model: %s\n", cfg.Model)
 		fmt.Fprintf(os.Stderr, "Temperature set to: %.2f\n", cfg.Temperature)
+		fmt.Fprintf(os.Stderr, "Max Tokens set to: %d\n", *cfg.MaxTokens)
 		fmt.Fprintln(os.Stderr, "-----------------------------------")
 	},
 }
