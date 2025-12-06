@@ -3,8 +3,8 @@ package generator
 import (
 	"fmt"
 
-	"smart-commit/pkg/git"
-	"smart-commit/pkg/llm"
+	"github.com/kevinliao852/smart-commit/pkg/git"
+	"github.com/kevinliao852/smart-commit/pkg/llm"
 )
 
 type Generator struct {

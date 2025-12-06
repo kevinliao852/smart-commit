@@ -1,4 +1,4 @@
-module smart-commit
+module github.com/kevinliao852/smart-commit
 
 go 1.24.2
 

@@ -3,10 +3,9 @@ package cmd
 import (
 	"fmt"
 
-	"smart-commit/config"
-	"smart-commit/pkg/generator"
-	"smart-commit/pkg/llm"
-
+	"github.com/kevinliao852/smart-commit/config"
+	"github.com/kevinliao852/smart-commit/pkg/generator"
+	"github.com/kevinliao852/smart-commit/pkg/llm"
 	"github.com/spf13/cobra"
 )
 

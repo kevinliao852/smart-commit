@@ -4,8 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"smart-commit/config"
-
+	"github.com/kevinliao852/smart-commit/config"
 	"github.com/spf13/cobra"
 )
 
