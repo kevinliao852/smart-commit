@@ -13,7 +13,7 @@ Smart Commit is a command-line interface tool that leverages Large Language Mode
 To install Smart Commit, make sure you have Go installed (version 1.18 or higher).
 
 ```bash
-go install
+go install github.com/kevinliao852/smart-commit@latest
 ```
 
 ## Usage
