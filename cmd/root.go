@@ -46,4 +46,5 @@ func init() {
 	)
 
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.PersistentFlags().BoolFuncP("version", "v", "Version for smart-commit", Version)
 }

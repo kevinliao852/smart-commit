@@ -6,6 +6,13 @@ before:
 
 builds:
   - id: build-linux
+    ldflags:
+      - -s -w
+      - "-extldflags '-static'"
+      - -X 'github.com/kevinliao852/smart-commit/cmd.GitVersion={{.Version}}'
+      - -X 'github.com/kevinliao852/smart-commit/cmd.GitCommit={{.Commit}}'
+      - -X 'github.com/kevinliao852/smart-commit/cmd.BuildDate={{.Date}}'
+      - -X 'github.com/kevinliao852/smart-commit/cmd.RepoUrl=https://github.com/kevinliao852/smart-commit'
     env:
       - CGO_ENABLED=0
     goos:
