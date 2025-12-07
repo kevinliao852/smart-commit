@@ -5,7 +5,7 @@ before:
     - go mod tidy
 
 builds:
-  - id: build-linux
+  - id: smart-commit
     ldflags:
       - -s -w
       - "-extldflags '-static'"
@@ -51,7 +51,7 @@ release:
 
 upx:
   - enabled: true
-    ids: [build-linux]
+    ids: [smart-commit]
     goos: [linux, darwin]
     goarch: [arm, amd64]
     compress: best
