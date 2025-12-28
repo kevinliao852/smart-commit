@@ -5,6 +5,8 @@ import (
 	"os"
 	"runtime"
 	"text/tabwriter"
+
+	goversion "github.com/caarlos0/go-version"
 )
 
 var name = `
@@ -19,7 +21,7 @@ var (
 	GitCommit  = "unknown"
 	GitVersion = "unknown"
 	BuildDate  = "unknown"
-	RepoURL    = "unknown"
+	RepoURL    = "https://github.com/kevinliao852/smart-commit"
 )
 
 func Version(_ string) error {
@@ -29,10 +31,11 @@ func Version(_ string) error {
 		K string
 		V string
 	}
+	vi := goversion.GetVersionInfo()
 	kvs := []KV{
-		{K: "GitVersion", V: GitVersion},
-		{K: "GitCommit", V: GitCommit},
-		{K: "BuildDate", V: BuildDate},
+		{K: "GitVersion", V: vi.GitVersion},
+		{K: "GitCommit", V: vi.GitCommit},
+		{K: "BuildDate", V: vi.BuildDate},
 		{K: "GoVersion", V: runtime.Version()},
 		{K: "Compiler", V: runtime.Compiler},
 		{K: "Platform", V: fmt.Sprintf("%s/%s", runtime.GOOS, runtime.GOARCH)},
