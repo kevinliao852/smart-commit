@@ -19,8 +19,13 @@ and generates a suitable commit message using an AI language model.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		cfg := config.Get()
 
+		var customPrompt = cfg.CustomPrompt
+		if len(customPrompt) <= 0 {
+			customPrompt, _ = cmd.Flags().GetString("custom")
+		}
+
 		g := generator.New(llm.NewOpenAIClient(
-			cfg.OpenAIKey, cfg.Model, cfg.CustomPrompt, cfg.BasePrompt, cfg.MaxTokens,
+			cfg.OpenAIKey, cfg.Model, customPrompt, cfg.BasePrompt, cfg.MaxTokens,
 		))
 		msg, err := g.Generate()
 		if err != nil {
@@ -33,5 +38,6 @@ and generates a suitable commit message using an AI language model.`,
 }
 
 func init() {
+	generateCmd.Flags().StringP("custom", "c", "", "Add your custom prompt")
 	rootCmd.AddCommand(generateCmd)
 }
