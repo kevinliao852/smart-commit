@@ -44,6 +44,7 @@ func Load(configFile string) (*Config, error) {
 	if err := v.Unmarshal(&cfg); err != nil {
 		return nil, fmt.Errorf("failed to unmarshal config: %w", err)
 	}
+	cfg.ConfigPath = v.ConfigFileUsed()
 
 	store(&cfg)
 

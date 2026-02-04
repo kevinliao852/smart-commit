@@ -9,6 +9,7 @@ type Config struct {
 	CustomPrompt string  `mapstructure:"custom_prompt"`
 	BasePrompt   string  `mapstructure:"base_prompt"`
 	MaxTokens    *int    `mapstructure:"max_tokens"`
+	ConfigPath   string  `mapstructure:"-"`
 }
 
 // configValue holds the current configuration atomically.

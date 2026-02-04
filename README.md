@@ -32,6 +32,12 @@ smart-commit generate
 
 The generated message will be displayed, and you will be prompted to confirm or edit it before committing.
 
+To see the location of the configuration file being used:
+
+```bash
+smart-commit where
+```
+
 ## Configuration
 
 The configuration file is typically located at `~/.config/smart-commit/config.yaml`.
