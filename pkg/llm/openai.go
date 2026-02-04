@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strings"
 )
 
 type OpenAIClient struct {
@@ -43,12 +44,19 @@ func (c *OpenAIClient) GenerateCommitMessage(diff string) (string, error) {
 	}
 	prompt = prompt + "\n\n" + c.customPrompt
 
+	cond := strings.HasPrefix(c.model, "gpt-5")
+
 	req := map[string]any{
 		"model": c.model,
 		"messages": []map[string]string{
 			{"role": "user", "content": fmt.Sprintf(prompt, diff)},
 		},
-		"max_tokens": c.maxTokens,
+	}
+
+	if cond {
+		req["max_completion_tokens"] = c.maxTokens
+	} else {
+		req["max_tokens"] = c.maxTokens
 	}
 
 	body, _ := json.Marshal(req)
